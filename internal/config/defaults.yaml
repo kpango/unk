@@ -1,0 +1,37 @@
+# unk built-in defaults
+#
+# These are the values unk uses when no user config is present.
+# Override any setting in:
+#   ~/.config/unk/config.yaml    (global — all repos)
+#   .unk/config.yaml             (per-repository)
+#
+# The vcs backend is intentionally absent here: it is auto-detected
+# from the repository type (.git → "git", .jj → "jj").
+
+# Layout mode: "auto" (pick split or stack based on terminal width),
+#              "split" (side-by-side), "stack" (vertical)
+mode: auto
+
+# Color theme.
+# Built-in names: graphite, midnight, paper, ember,
+#                 catppuccin-mocha, catppuccin-latte,
+#                 solarized-dark, solarized-light
+theme: graphite
+
+# Key-binding style: "helix", "vim", "emacs"
+keymap: helix
+
+# Show line numbers in the diff pane
+line_numbers: true
+
+# Wrap long lines instead of scrolling horizontally
+wrap_lines: false
+
+# Show unk metadata header rows
+unk_headers: true
+
+# Show agent annotation notes
+agent_notes: false
+
+# Hide untracked files from the sidebar
+exclude_untracked: false
