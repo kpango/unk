@@ -1,0 +1,142 @@
+# unk config.yaml — full reference
+#
+# Place this file at one of:
+#   $XDG_CONFIG_HOME/unk/config.yaml       (global — applies to all invocations)
+#   $HOME/.config/unk/config.yaml          (global fallback)
+#   <repo-root>/.unk/config.yaml           (per-repository, overrides global)
+#
+# TOML format (config.toml) is also supported.  When both exist in the same
+# directory, YAML takes precedence.
+#
+# Precedence order (lowest → highest):
+#   built-in defaults → global TOML → global YAML → repo TOML → repo YAML → CLI flags
+
+# ── General settings ──────────────────────────────────────────────────────────
+
+# Layout mode: "auto" (default), "split" (side-by-side), "stack" (vertical)
+mode: auto
+
+# Version-control backend: "git" (default), "jj"
+vcs: git
+
+# Active color theme.  Built-in names: graphite (default), midnight, paper,
+# ember, catppuccin-mocha, catppuccin-latte, solarized-dark, solarized-light.
+# Custom theme names defined in the `themes` section below are also accepted.
+theme: graphite
+
+# Base key-binding style: "helix" (default), "vim", "emacs"
+keymap: helix
+
+# Show line numbers in the diff pane (default: true)
+line_numbers: true
+
+# Wrap long lines (default: false)
+wrap_lines: false
+
+# Show unk metadata rows (default: true)
+unk_headers: true
+
+# Show agent annotation notes (default: false)
+agent_notes: false
+
+# Hide untracked files from the sidebar (default: false)
+exclude_untracked: false
+
+# ── Per-command overrides ─────────────────────────────────────────────────────
+# Settings here override the global values for a specific command.
+# Valid command names: vcs, show, stash-show, diff, patch, difftool, pager
+#
+# commands:
+#   vcs:
+#     mode: split
+#   show:
+#     theme: paper
+#     line_numbers: false
+#   pager:
+#     wrap_lines: true
+
+# ── Keybinding overrides ──────────────────────────────────────────────────────
+# Override individual key bindings on top of the chosen keymap style.
+# Each entry maps an action name (snake_case) to a list of key sequences.
+# Multiple sequences for one action are all active simultaneously.
+#
+# Key sequence syntax (same as bubbletea):
+#   Single chars:   "a", "z", "0", "]", "/"
+#   Special keys:   "up", "down", "left", "right", "enter", "tab", "esc",
+#                   "backspace", "delete", "home", "end", "pgup", "pgdown",
+#                   "f1"–"f12", "space"
+#   Modifiers:      "ctrl+c", "alt+f", "shift+left"
+#
+# Available action names:
+#   Navigation:     next_unk, prev_unk, next_annotated_unk, prev_annotated_unk,
+#                   next_file, prev_file
+#   Scrolling:      scroll_up, scroll_down, scroll_up_half, scroll_down_half,
+#                   scroll_page_up, scroll_page_down, scroll_top, scroll_bottom,
+#                   scroll_left, scroll_right, scroll_left_fast, scroll_right_fast
+#   Layout:         layout_split, layout_stack, layout_auto
+#   Toggles:        toggle_sidebar, toggle_line_numbers, toggle_wrap,
+#                   toggle_unk_headers, toggle_agent_notes, cycle_theme
+#   Actions:        refresh, open_in_editor, yank_unk, focus_filter,
+#                   focus_search, search_next, search_prev, command_mode,
+#                   toggle_focus, help, quit, suspend
+#   Menu:           menu_open, menu_close, menu_left, menu_right,
+#                   menu_up, menu_down, menu_confirm
+#
+# keybindings:
+#   next_unk: ["]", "ctrl+n"]
+#   prev_unk: ["[", "ctrl+p"]
+#   quit: ["q", "ctrl+c"]
+#   scroll_down: ["j", "down", "ctrl+j"]
+#   scroll_up: ["k", "up", "ctrl+k"]
+
+# ── Custom color themes ───────────────────────────────────────────────────────
+# Define named color palettes that extend the built-in theme set.
+# Custom theme names appear at the end of the `t` (cycle-theme) cycle.
+# Any field left empty inherits the terminal's default color for that slot.
+#
+# themes:
+#   my-dark:
+#     # Chrome / panels
+#     panel_alt: "#1d2126"       # menu bar, status bar background
+#     panel: "#171a1d"           # file header, context line background
+#     border: "#343c45"          # divider lines
+#     accent: "#d5e0ea"          # selection strip, active border
+#
+#     # Text
+#     text: "#f2f4f6"            # primary text
+#     muted: "#9aa4af"           # secondary / context text
+#     accent_muted: "#414a54"    # active/selected item background
+#
+#     # Diff line backgrounds
+#     added_bg: "#1f3025"
+#     removed_bg: "#372526"
+#     context_bg: "#181c20"
+#     added_content_bg: "#24362a"    # intra-line changed span (addition side)
+#     removed_content_bg: "#432b2d"  # intra-line changed span (deletion side)
+#     added_sign_color: "#88d39b"    # addition marker and text color
+#     removed_sign_color: "#f0a0a0"  # deletion marker and text color
+#
+#     # Unk header row
+#     unk_header_fg: "#9aa4af"
+#
+#     # Line number column
+#     line_number_bg: "#14181b"
+#     line_number_fg: "#798592"
+#
+#     # Sidebar change badges
+#     badge_added: "#88d39b"
+#     badge_removed: "#f0a0a0"
+#     badge_neutral: "#a9b4bf"
+#
+#     # Sidebar file-type icon colors
+#     file_new: "#88d39b"
+#     file_deleted: "#f0a0a0"
+#     file_renamed: "#e6cf98"
+#     file_modified: "#c49bff"
+#     file_untracked: "#7fd1ff"
+#
+#     # Agent annotation note box
+#     note_border: "#c6a0ff"
+#     note_background: "#241c31"
+#     note_title_background: "#322446"
+#     note_title_text: "#f5edff"

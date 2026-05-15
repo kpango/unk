@@ -1,0 +1,28 @@
+# Build outputs
+unk
+bin/
+cmd/unk/unk
+
+# Test artifacts
+*.test
+test-results/
+
+# Generated files
+.gitfiles
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Go tooling
+vendor/
+*.out
+*.prof
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+.idea/
+*.swp
+*.swo
